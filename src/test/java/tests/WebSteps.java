@@ -1,9 +1,9 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -34,12 +34,12 @@ public class WebSteps {
 
     @Step("Проверяем что Issue с номером {number} существует")
     public void shouldSeeIssueWithNumber(int number) {
-        $(withText("#" + number)).should(Condition.exist);
+        $(withText("#" + number)).should(exist);
     }
 
     @Step("Проверяем что Issue с именем {name} существует")
     public void shouldSeeIssueWithName(String name) {
-        $(withText(name)).should(Condition.exist);
+        $(withText(name)).should(exist);
     }
 
 }

@@ -1,11 +1,11 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -37,14 +37,10 @@ public class LambdaStepsTests {
             $(".header-search-input").sendKeys(REPOSITORY);
             $(".header-search-input").submit();
         });
-        step("Переходим в репозиторий", () -> {
-            $(By.linkText(REPOSITORY)).click();
-        });
-        step("Переходим в таб Issues", () -> {
-            $(withText("Issues")).click();
-        });
+        step("Переходим в репозиторий", () -> $(By.linkText(REPOSITORY)).click());
+        step("Переходим в таб Issues", () -> $(withText("Issues")).click());
         step("Проверяем что issue с номером  " + ISSUE_NUMBER + " существует", () -> {
-            $(withText("#" + ISSUE_NUMBER)).should(Condition.exist);
+            $(withText("#" + ISSUE_NUMBER)).should(exist);
         });
     }
 
@@ -65,14 +61,10 @@ public class LambdaStepsTests {
             $(".header-search-input").sendKeys(REPOSITORY);
             $(".header-search-input").submit();
         });
-        step("Переходим в репозиторий", () -> {
-            $(By.linkText(REPOSITORY)).click();
-        });
-        step("Переходим в таб Issues", () -> {
-            $(withText("Issues")).click();
-        });
+        step("Переходим в репозиторий", () -> $(By.linkText(REPOSITORY)).click());
+        step("Переходим в таб Issues", () -> $(withText("Issues")).click());
         step("Проверяем что issue с именем " + ISSUE_NAME + " существует", () -> {
-            $(withText(ISSUE_NAME)).should(Condition.exist);
+            $(withText(ISSUE_NAME)).should(exist);
         });
     }
 }

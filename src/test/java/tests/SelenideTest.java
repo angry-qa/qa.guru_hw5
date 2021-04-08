@@ -1,12 +1,12 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -28,7 +28,7 @@ public class SelenideTest {
         $(".header-search-input").submit();
         $(By.linkText(REPOSITORY)).click();
         $(withText("Issues")).click();
-        $(withText("#" + ISSUE_NUMBER)).should(Condition.exist);
+        $(withText("#" + ISSUE_NUMBER)).should(exist);
     }
 
     @Test
@@ -41,7 +41,6 @@ public class SelenideTest {
         $(".header-search-input").submit();
         $(By.linkText(REPOSITORY)).click();
         $(withText("Issues")).click();
-        $(withText(ISSUE_NAME)).should(Condition.exist);
+        $(withText(ISSUE_NAME)).should(exist);
     }
-
 }
